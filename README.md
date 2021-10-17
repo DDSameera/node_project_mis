@@ -35,7 +35,7 @@ Go to `config` folder & Add your  own keys .
 
 Example
 
-#### auth-configs.js
+#### auth-config.js
 ```
 authConfig.encryptorSecretKey = '393a41d556f3d8164a1520f2fb30795d';
 authConfig.jwtTokenKey = 'abc123456789010012134214252';

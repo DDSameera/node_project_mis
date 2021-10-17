@@ -1,6 +1,12 @@
+
 const responseService = require("../services/response.service");
 const userService = require("../services/user.service");
 const userValidation = require("../validations/user.validation");
+
+/****************************************
+ * List of All Product Categories
+ * @param request,response
+ /***************************************/
 
 module.exports.createUser = async (request, response) => {
 
@@ -22,6 +28,10 @@ module.exports.createUser = async (request, response) => {
 
 }
 
+/****************************************
+ * Login User
+ * @param request,response
+ /***************************************/
 
 module.exports.loginUser = async (request, response) => {
 

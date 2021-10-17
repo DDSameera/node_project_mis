@@ -1,9 +1,18 @@
+/*************
+ * Constants
+ /************/
+
 const responseService = require("../services/response.service");
 const productCatValidation = require("../validations/productCat.validation");
 const productCatService = require("../services/productCat.service");
 
 
-module.exports.getProductCat = async (request, response) => {
+/****************************************
+ * List of All Product Categories
+ * @param request,response
+ /***************************************/
+
+module.exports.getAllProductCats = async (request, response) => {
 
 
     return await productCatService.findAllProductCats().then(result => {
@@ -14,6 +23,11 @@ module.exports.getProductCat = async (request, response) => {
 
 }
 
+
+/****************************************
+ * Create Product Category
+ * @param request,response
+ /***************************************/
 
 module.exports.createProductCat = async (request, response) => {
 
@@ -37,10 +51,14 @@ module.exports.createProductCat = async (request, response) => {
 }
 
 
+/****************************************
+ * Create Update Product Category
+ * @param request,response
+ /***************************************/
+
 module.exports.updateProductCat = async (request, response) => {
     let productId = request.params.id;
     let productCatData = request.body;
-
 
 
     let validationResponse = await productCatValidation.isValidCreateProductCatInput(productCatData);
