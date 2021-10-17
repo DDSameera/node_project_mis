@@ -1,12 +1,10 @@
 const jwt = require("jsonwebtoken");
 const authConfigs = require("../config/auth-configs");
-
 const encryptorSecretKey = authConfigs.encryptorSecretKey;
 const encryptor = require('simple-encryptor')(encryptorSecretKey);
-
 const jwtTokenKey = authConfigs.jwtTokenKey;
 
-
+const responseService = require("../services/response.service");
 
 module.exports.verifyToken = (request, response, nextFun) => {
 
@@ -20,20 +18,24 @@ module.exports.verifyToken = (request, response, nextFun) => {
             if (result) {
                 nextFun();
             } else {
-                response.send('Token is invalid');
+                responseService.successWithData(response,'Token is invalid');
             }
         } catch (error) {
 
             let isExpire = error.hasOwnProperty('expiredAt');
 
             if (isExpire){
-                response.send('Token is expired');
+                 responseService.successWithData(response,'Token is expired');
+            }else{
+                responseService.successWithData(response,'Token is invalid');
+
             }
-            response.send('Token is invalid');
+
         }
 
 
     } else {
-        response.send('Authorization Failed');
+         responseService.successWithData(response,'Authorization Failed');
+
     }
 }
