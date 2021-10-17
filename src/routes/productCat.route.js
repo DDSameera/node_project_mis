@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const productCatController = require("../controllers/productCat.controller");
-const tokenService = require("../services/token.service");
+const tokenMiddleware = require("../middlewares/token.middleware");
 
-router.route('/prodcat').get(tokenService.verifyToken,productCatController.getProductCat);
-router.route('/prodcat/create').post(tokenService.verifyToken,productCatController.createProductCat);
-router.route('/prodcat/update/:id').patch(tokenService.verifyToken,productCatController.updateProductCat);
+router.route('/prodcat').get(tokenMiddleware.verifyToken,productCatController.getProductCat);
+router.route('/prodcat/create').post(tokenMiddleware.verifyToken,productCatController.createProductCat);
+router.route('/prodcat/update/:id').patch(tokenMiddleware.verifyToken,productCatController.updateProductCat);
 
 module.exports = router;
