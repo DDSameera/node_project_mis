@@ -1,4 +1,4 @@
-# PRODUCT MANGEMENT INFORMATION SYSTEM (PMIS)
+## PRODUCT MANGEMENT INFORMATION SYSTEM (PMIS)
 
 `PMIS` is NodeJS Backend Project Develop for CMG.It facilitate to register user
 and login user within secured environment.
