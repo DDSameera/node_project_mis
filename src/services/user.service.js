@@ -4,10 +4,13 @@ const authConfig = require('../config/auth-configs');
 const encryptorSecretKey = authConfig.encryptorSecretKey;
 const encryptor = require('simple-encryptor')(encryptorSecretKey);
 
-
-
 const tokenService = require('./token.service');
 
+
+/*******************************************
+ *  User Registration
+ * @param userData
+ /*****************************************/
 module.exports.createUser = (userData) => User.create({
     first_name: userData.first_name,
     last_name: userData.last_name,
@@ -15,7 +18,10 @@ module.exports.createUser = (userData) => User.create({
     password: encryptor.encrypt(userData.password)
 });
 
-
+/*******************************************
+ *  Secured Login User
+ * @param userData
+ /*****************************************/
 module.exports.loginUser = (userData) => User.findOne({where: {email: userData.email}}).then(result => {
 
     let decryptedPassword = encryptor.decrypt(result.password);

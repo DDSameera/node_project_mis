@@ -1,4 +1,10 @@
 'use strict';
+
+/****************************************
+ * Model : Product Category
+ /***************************************/
+
+
 const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {

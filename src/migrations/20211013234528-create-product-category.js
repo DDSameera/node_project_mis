@@ -1,4 +1,9 @@
 'use strict';
+/****************************************
+ * Model : Product Category Model
+ * Table : tbl_product_cat
+ /***************************************/
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('tbl_product_cat', {

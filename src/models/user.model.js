@@ -1,4 +1,8 @@
 'use strict';
+/******************
+ * Model : User
+ /****************/
+
 const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {

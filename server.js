@@ -4,14 +4,20 @@ const productCatRoutes = require('./src/routes/productCat.route');
 const serverConfig = require('./src/config/server-config');
 const server = express();
 
-//JSON Response Output
+/********************************************
+ * JSON Response Enabled
+ /******************************************/
 server.use(express.json());
 
-//Routes
+/********************************************
+ * Routes Enabled
+ /******************************************/
 server.use(userRoutes);
 server.use(productCatRoutes);
 
-//Connected
+/********************************************
+ * Server Started
+ /******************************************/
 server.listen( serverConfig.port, (error) => {
     if (error) {
         console.log(error);

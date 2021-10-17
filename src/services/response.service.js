@@ -1,3 +1,8 @@
+/********************************************
+ * Return Success Response with Data
+ * @return response,data
+ /******************************************/
+
 module.exports.successWithData = (response, data) => {
     let res = {
         status: true,
@@ -6,6 +11,13 @@ module.exports.successWithData = (response, data) => {
     };
     response.send(res);
 }
+
+/********************************************
+ * Return Success Response with Token
+ * @return response,data
+ /******************************************/
+
+
 module.exports.successWithToken = (response, data) => {
     let res = {
         status: true,
@@ -15,10 +27,17 @@ module.exports.successWithToken = (response, data) => {
     };
     response.send(res);
 }
+
+/********************************************
+ * Return Failed Response with Error Messages
+ * @return response,message,type
+ /******************************************/
 module.exports.errorWithMessage = (response, message, type = 'error') => {
 
 
     if (type == "validations") {
+
+        /* Show Validation Error Messages*/
         let errorMessages = [];
 
         for (const m of message) {
@@ -34,6 +53,7 @@ module.exports.errorWithMessage = (response, message, type = 'error') => {
         };
         response.send(res);
     } else {
+        /* Show Unexpected Error Messages*/
         let res = {
             status: false,
             message: message

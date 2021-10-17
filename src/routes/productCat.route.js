@@ -1,3 +1,7 @@
+/******************************
+ * Routes : Product Category
+ /****************************/
+
 const express = require('express');
 const router = express.Router();
 const productCatController = require("../controllers/productCat.controller");

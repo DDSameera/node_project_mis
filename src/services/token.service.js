@@ -8,6 +8,10 @@ const encryptor = require('simple-encryptor')(encryptorSecretKey);
 
 
 
+/*******************************************
+ *  Generate JWT Token with Expiration Date
+ * @param userObject
+ /*****************************************/
 
 module.exports.createToken = (userObject) => {
     let userDetails = {

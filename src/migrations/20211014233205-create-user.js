@@ -1,4 +1,9 @@
 'use strict';
+/****************************************
+ * Model : User
+ * Table : tbl_users
+ /***************************************/
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('tbl_users', {

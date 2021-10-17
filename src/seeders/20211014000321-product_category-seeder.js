@@ -1,4 +1,7 @@
 'use strict';
+/******************************
+ * Seeder : Product Category
+ /****************************/
 
 module.exports = {
     up: async (queryInterface, Sequelize) => {
