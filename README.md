@@ -310,7 +310,7 @@ Import the logger from `src/config/logger.js`. It is using the [Winston](https:/
 Logging should be done according to the following severity levels (ascending order from most important to least important):
 
 ```javascript
-const logger = require('<path to src>/config_example/logger');
+const logger = require('<path to src>/config/logger');
 
 logger.error('message'); // level 0
 logger.warn('message'); // level 1

@@ -1,5 +1,5 @@
 const {User} = require("../models");
-const authConfig = require('../config_example/auth-configs');
+const authConfig = require('../config/auth-configs');
 
 const encryptorSecretKey = authConfig.encryptorSecretKey;
 const encryptor = require('simple-encryptor')(encryptorSecretKey);
