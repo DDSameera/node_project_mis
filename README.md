@@ -13,39 +13,68 @@ If you would still prefer to do the installation manually, follow these steps:
 
 ```bash
 git clone https://github.com/DDSameera/node_project_mis.git
-cd node_produt_mis
+cd node_project_mis
 ```
 
 ### 2.Install the dependencies:
 
 ```bash
 npm install
+npm audit fix
 ```
 
-### 3. Set the configuerations:
+### 3. Set the configurations:
 
-```bash
-cp .env.example .env
+Rename `config.example` folder into `config`
 
-# open .env and modify the environment variables (if needed)
+Go to `config` folder & Add your  own keys .
+
+Example
+
+#### auth-configs.js
+```
+authConfig.encryptorSecretKey = '393a41d556f3d8164a1520f2fb30795d';
+authConfig.jwtTokenKey = 'abc123456789010012134214252';
 ```
 
-## Table of Contents
+#### config.js
+```
+......
+  "development": {
+    "username": "xxxxxxxxxxxxxxxxxx", // Default : root
+    "password": "xxxxxxxxxxxxxxxxxx",// Default : null
+    "database": "xxxxxxxxxxxxxxxx",// Default : node_product_mis
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  ......
+```
+#### server-config.js
+```
+serverConfigs.port = 3000;
+```
+### 4. Set up Database
+Create new database (Eg : `node_product_mis`)
 
-- [Features](#features)
-- [Commands](#commands)
-- [Environment Variables](#environment-variables)
-- [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Error Handling](#error-handling)
-- [Validation](#validation)
-- [Authentication](#authentication)
-- [Authorization](#authorization)
-- [Logging](#logging)
-- [Custom Mongoose Plugins](#custom-mongoose-plugins)
-- [Linting](#linting)
-- [Contributing](#contributing)
+### 5. Run Following DB Commands
+```
+sequelize-cli db:migrate
+sequelize db:seed:all
+```
+### 6. Start Server
+```
+nodemon server.js
+```
 
+### 7. Refer Postman Collection
+1. Open Postman
+2. Go to Main Menu > File > Import
+3. Go to Link Tab
+4. Enter Url : `https://www.postman.com/collections/176ec8faf5977d317299`
+5. Click Continue button
+6. Click Import
+
+That's all
 ## Features
 
 - **NoSQL database**: [MongoDB](https://www.mongodb.com) object data modeling using [Mongoose](https://mongoosejs.com)

@@ -4,7 +4,7 @@ const authConfig = require('../config/auth-configs');
 const encryptorSecretKey = authConfig.encryptorSecretKey;
 const encryptor = require('simple-encryptor')(encryptorSecretKey);
 
-const tokenService = require('../services/token.service');
+const tokenService = require('./token.service');
 
 module.exports.createUser = (userData) => User.create({
     first_name: userData.first_name,

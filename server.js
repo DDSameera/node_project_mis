@@ -1,7 +1,7 @@
 const express = require('express');
-const userRoutes = require('./routes/user.route');
-const productCatRoutes = require('./routes/productCat.route');
-const serverConfig = require('./config/server-config');
+const userRoutes = require('./src/routes/user.route');
+const productCatRoutes = require('./src/routes/productCat.route');
+const serverConfig = require('./src/config/server-config');
 const server = express();
 
 //JSON Response Output
