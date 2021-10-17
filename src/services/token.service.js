@@ -1,9 +1,12 @@
 const jwt = require('jsonwebtoken');
 const authConfigs = require('../config/auth-configs');
-
+const jwtTokenKey = authConfigs.jwtTokenKey;
+const jwtTokenExpireTime = authConfigs.jwtTokenExpireTime;
 
 const encryptorSecretKey = authConfigs.encryptorSecretKey;
 const encryptor = require('simple-encryptor')(encryptorSecretKey);
+
+
 
 
 module.exports.createToken = (userObject) => {
@@ -13,22 +16,24 @@ module.exports.createToken = (userObject) => {
         last_name: userObject.last_name
     };
 
-    return jwt.sign(userDetails, authConfigs.jwtTokenKey);
+    let jwtToken = jwt.sign(userDetails, jwtTokenKey,{expiresIn: jwtTokenExpireTime});
+    let encryptedToken = encryptor.encrypt(jwtToken);
 
+    return encryptedToken;
 
 }
 
 module.exports.verifyToken = (request, response, nextFun) => {
-    let authorization = request.headers.authorization;
-    let jwtTokenKey = authConfigs.jwtTokenKey;
+
+let authorization = request.headers.authorization
     if (authorization) {
 
         try {
-            let decryptedToken = encryptor.decrypt(authorization, authConfigs.jwtTokenKey);
+            let decryptedToken = encryptor.decrypt(authorization);
             let result = jwt.verify(decryptedToken, jwtTokenKey);
 
             if (result) {
-                nextFun();
+               nextFun();
             } else {
                 response.send('Token is invalid');
             }

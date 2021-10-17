@@ -4,6 +4,8 @@ const authConfig = require('../config/auth-configs');
 const encryptorSecretKey = authConfig.encryptorSecretKey;
 const encryptor = require('simple-encryptor')(encryptorSecretKey);
 
+
+
 const tokenService = require('./token.service');
 
 module.exports.createUser = (userData) => User.create({
@@ -16,22 +18,20 @@ module.exports.createUser = (userData) => User.create({
 
 module.exports.loginUser = (userData) => User.findOne({where: {email: userData.email}}).then(result => {
 
-        let decryptedPassword = encryptor.decrypt(result.password);
+    let decryptedPassword = encryptor.decrypt(result.password);
 
-        if (decryptedPassword === userData.password) {
+    if (decryptedPassword === userData.password) {
+        let jwtToken = tokenService.createToken(result);
 
-            let jwtToken = tokenService.createToken(result);
-            jwtToken = encryptor.encrypt(jwtToken, encryptorSecretKey);
-
-            return {
-                token: jwtToken,
-                message: "Successfully Logged"
-            }
-        } else {
-            return null;
+        return {
+            token: jwtToken,
+            message: "Successfully Logged"
         }
+    } else {
+        return null;
+    }
 
 
-    }).catch(error => {
-        return error
-    });
+}).catch(error => {
+    return error
+});
